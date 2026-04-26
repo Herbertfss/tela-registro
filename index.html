@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- METADADOS ESSENCIAIS PARA SEO E COMPATIBILIDADE -->
+    <meta charset="UTF-8" />
+    <!-- Viewport responsivo - garante que o site funciona em todos os dispositivos -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <!-- Descrição para mecanismos de busca e compartilhamento em redes sociais -->
+    <meta
+      name="description"
+      content="Plataforma de registro profissional com validação em tempo real e design responsivo"
+    />
+    <!-- Autor do projeto para documentação -->
+    <meta name="author" content="Herbert Freire" />
+    <!-- Título da página que aparece na aba do navegador -->
+    <title>Registro | Crie sua conta profissional</title>
+
+    <!-- PRÉ-CONEXÃO COM GOOGLE FONTS - Melhora performance no carregamento das fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- FONTE PROFISSIONAL INTER - Moderna e altamente legível -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- FOLHA DE ESTILO PRINCIPAL -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- 
+        ESTRUTURA PRINCIPAL DA PÁGINA
+        - Container principal centraliza o conteúdo verticalmente
+        - Uso de tags semânticas (main) para melhor acessibilidade
+    -->
+    <main class="container">
+      <!-- CARD PRINCIPAL DO FORMULÁRIO -->
+      <div class="register-card">
+        <!-- 
+                CABEÇALHO DA MARCA
+                - Logo visual para identidade visual
+                - Título principal (H1) para SEO
+                - Subtítulo descritivo
+            -->
+        <div class="brand-header">
+          <div class="logo" aria-label="Logo da empresa">✨</div>
+          <h1>Criar conta</h1>
+          <p>Preencha os dados abaixo para começar sua jornada</p>
+        </div>
+
+        <!-- 
+                FORMULÁRIO DE REGISTRO
+                - novalidate: desativa validação nativa do HTML, usaremos JavaScript
+                - id="registerForm": referência para manipulação no JS
+            -->
+        <form id="registerForm" novalidate>
+          <!-- CAMPO: NOME COMPLETO -->
+          <div class="form-group">
+            <label for="fullname">Nome completo</label>
+            <div class="input-wrapper">
+              <!-- 
+                            required: indica que campo é obrigatório (validação HTML)
+                            placeholder: texto de exemplo para orientação do usuário
+                        -->
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                placeholder="Ex: João Silva Santos"
+                required
+                aria-describedby="fullnameError"
+              />
+              <!-- Elemento para exibir mensagens de erro em tempo real -->
+              <span class="error-message" id="fullnameError"></span>
+            </div>
+          </div>
+
+          <!-- CAMPO: E-MAIL -->
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <div class="input-wrapper">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+                aria-describedby="emailError"
+              />
+              <span class="error-message" id="emailError"></span>
+            </div>
+          </div>
+
+          <!-- CAMPO: TELEFONE (OPCIONAL) -->
+          <div class="form-group">
+            <label for="phone"
+              >Telefone <span class="optional-label">(opcional)</span></label
+            >
+            <div class="input-wrapper">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="(11) 99999-9999"
+                aria-describedby="phoneError"
+              />
+              <span class="error-message" id="phoneError"></span>
+            </div>
+          </div>
+
+          <!-- CAMPO: SENHA -->
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <div class="input-wrapper password-wrapper">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Crie uma senha forte"
+                required
+                aria-describedby="passwordError"
+              />
+              <!-- Botão para mostrar/ocultar senha (UX improvement) -->
+              <button
+                type="button"
+                class="toggle-password"
+                aria-label="Mostrar ou ocultar senha"
+              >
+                👁️
+              </button>
+              <span class="error-message" id="passwordError"></span>
+            </div>
+
+            <!-- INDICADOR DE FORÇA DA SENHA -->
+            <div class="password-strength">
+              <div class="strength-bar"></div>
+              <span class="strength-text"></span>
+            </div>
+          </div>
+
+          <!-- CAMPO: CONFIRMAR SENHA -->
+          <div class="form-group">
+            <label for="confirmPassword">Confirmar senha</label>
+            <div class="input-wrapper password-wrapper">
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Digite a senha novamente"
+                required
+                aria-describedby="confirmError"
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                aria-label="Mostrar ou ocultar senha"
+              >
+                👁️
+              </button>
+              <span class="error-message" id="confirmError"></span>
+            </div>
+          </div>
+
+          <!-- TERMOS E CONDIÇÕES (CHECKBOX) -->
+          <div class="form-group checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="terms" required />
+              <span>
+                Eu li e aceito os
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                  >Termos de Uso</a
+                >
+                e a
+                <a href="#" target="_blank" rel="noopener noreferrer"
+                  >Política de Privacidade</a
+                >
+              </span>
+            </label>
+            <span class="error-message" id="termsError"></span>
+          </div>
+
+          <!-- BOTÃO DE SUBMISSÃO -->
+          <button type="submit" class="btn-submit">Criar conta</button>
+
+          <!-- LINK PARA LOGIN (USUÁRIOS EXISTENTES) -->
+          <p class="login-link">
+            Já tem uma conta? <a href="#">Fazer login</a>
+          </p>
+        </form>
+
+        <!-- 
+                TOAST NOTIFICATION
+                - Sistema de notificações que aparece temporariamente
+                - hidden: inicialmente invisível
+            -->
+        <div id="toast" class="toast hidden">
+          <span class="toast-icon">✅</span>
+          <span class="toast-message"></span>
+        </div>
+      </div>
+    </main>
+
+    <!-- SCRIPTS CARREGADOS NO FINAL DO BODY (MELHORA PERFORMANCE) -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
